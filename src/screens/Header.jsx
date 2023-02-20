@@ -5,7 +5,7 @@ function Header() {
     return (
         <>
             <StDivSize>
-                <Icon><Link to={"/"}>🏠</Link></Icon>
+                <Icon><Link to={"/"}>🏠</Link> 모두의 투두 리스트</Icon>
             </StDivSize>
         </>
     )
@@ -13,8 +13,7 @@ function Header() {
 export default Header
 
 const StDivSize = styled.div`
-    margin: 10px;
-    border: 1px solid gray;
+    border: 1px solid rgba(0, 0, 0, .15);
 `
 
 const Icon = styled.p`

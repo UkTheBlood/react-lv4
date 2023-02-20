@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 function Home() {
@@ -7,10 +8,14 @@ function Home() {
                 <StPTitle>무엇을 할까요?</StPTitle>
             </div>
             <StDivContentsBox>
-                <StPContensTitle>할 일 기록하기</StPContensTitle>
+                <Link to={"work/add"}>
+                    <StPContensTitle>할 일 기록하기</StPContensTitle>
+                </Link>
             </StDivContentsBox>
             <StDivContentsBox>
-                <StPContensTitle>TODO LIST</StPContensTitle>
+                <Link to={"/Works"}>
+                    <StPContensTitle>TODO LIST</StPContensTitle>
+                </Link>
             </StDivContentsBox>
         </div>
     )
@@ -34,6 +39,8 @@ const StDivContentsBox = styled.div`
 `
 const StPContensTitle = styled.p`
     margin-left: 20px;
-    line-height: 60px;
+    line-height: 50px;
     font-size: 22px;
+    color: black;
+    text-decoration-line: none;
 `
