@@ -1,13 +1,53 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { useMutation, useQueryClient } from 'react-query';
 import styled from 'styled-components';
+import { addTodo } from '../api/todos';
 
 function Work() {
+    const [writer, setWriter] = useState("");
+    const [title, setTitle] = useState("");
+    const [desc, setDesc] = useState("");
+
+    const handleWritter = (e) => {
+        setWriter(e.target.value)
+    }
+    const handleTitle = (e) => {
+        setTitle(e.target.value)
+    }
+    const handleDesc = (e) => {
+        setDesc(e.target.value)
+    }
+
+    // 리액트 쿼리
+    const queryClient = useQueryClient();
+    const mutation = useMutation(addTodo, {
+        onSuccess: () => {
+            queryClient.invalidateQueries("")
+            console.log("성공")
+        }
+    })
+
+    // 추가 버튼
+    const addButton = () => {
+        const newTodo = {
+            writer,
+            title,
+            desc,
+            id: Math.random()
+        }
+
+        mutation.mutate(newTodo);
+    }
+
+
+
     return (
         <>
             <StDivWrapper>
                 <div>
                     <StPTitle>작성자</StPTitle>
                     <StInputWriterTitle
+                        onChange={handleWritter}
                         type="text"
                         placeholder='작성자 이름을 입력해주세요. (5자 이내)'
                         maxLength="5"
@@ -17,6 +57,7 @@ function Work() {
                 <div>
                     <StPTitle>제목</StPTitle>
                     <StInputWriterTitle
+                        onChange={handleTitle}
                         type="text"
                         placeholder='제목을 입력해주세요. (50자 이내)'
                         maxLength="50"
@@ -26,6 +67,7 @@ function Work() {
                 <div>
                     <StPTitle>내용</StPTitle>
                     <StInputDesc
+                        onChange={handleDesc}
                         type="text"
                         placeholder='내용을 입력해주세요. (200자 이내)'
                         maxLength="200"
@@ -33,7 +75,7 @@ function Work() {
                     />
                 </div>
 
-                <StBtn>추가하기</StBtn>
+                <StBtn onClick={addButton}>추가하기</StBtn>
             </StDivWrapper>
         </>
     )
