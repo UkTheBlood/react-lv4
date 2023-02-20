@@ -7,5 +7,9 @@ const getTodos = async () => {
 const addTodo = async (newTodo) => {
     await axios.post("http://localhost:4002/todos", newTodo)
 }
+const deleteTodo = async (id) => {
+    await axios.delete(`http://localhost:4002/todos/${id}`)
+}
 
-export { getTodos, addTodo };
+
+export { getTodos, addTodo, deleteTodo };

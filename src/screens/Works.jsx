@@ -1,6 +1,6 @@
 import { useQuery } from "react-query";
 import styled from "styled-components";
-import { getTodos } from "../api/todos";
+import { deleteTodo, getTodos } from "../api/todos";
 
 
 function Works() {
@@ -25,6 +25,7 @@ function Works() {
                             <StDivList key={todo.id}>
                                 <StPTitle>{todo.title}</StPTitle>
                                 <StPWritter>작성자 : {todo.writer}</StPWritter>
+                                <button onClick={() => deleteTodo(todo.id)}>삭제</button>
                             </StDivList>
                         )
                     })
