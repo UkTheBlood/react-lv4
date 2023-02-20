@@ -1,5 +1,16 @@
 {
-    "todos": [
-      { "id": 1, "writer": "이재욱", "title": "리액트", "description": "리액트를 모두 공부하자" }
-    ]
-  }
+  "todos": [
+    {
+      "id": 1,
+      "writer": "이재욱",
+      "title": "리액트",
+      "description": "리액트를 모두 공부하자"
+    },
+    {
+      "id": 2,
+      "writer": "이재욱",
+      "title": "리액트 쿼리",
+      "description": "리액트쿼리를 모두 공부하자"
+    }
+  ]
+}
