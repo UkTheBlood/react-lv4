@@ -35,7 +35,16 @@ function Work() {
             desc,
             id: Math.random()
         }
+        alert(`
+            추가되었습니다!
+            작성자 : ${writer}
+            제목 : ${title}
+        `)
 
+
+        setWriter("")
+        setTitle("")
+        setDesc("")
         mutation.mutate(newTodo);
     }
 
@@ -49,6 +58,7 @@ function Work() {
                     <StInputWriterTitle
                         onChange={handleWritter}
                         type="text"
+                        value={writer}
                         placeholder='작성자 이름을 입력해주세요. (5자 이내)'
                         maxLength="5"
                         required
@@ -59,6 +69,7 @@ function Work() {
                     <StInputWriterTitle
                         onChange={handleTitle}
                         type="text"
+                        value={title}
                         placeholder='제목을 입력해주세요. (50자 이내)'
                         maxLength="50"
                         required
@@ -69,6 +80,7 @@ function Work() {
                     <StInputDesc
                         onChange={handleDesc}
                         type="text"
+                        value={desc}
                         placeholder='내용을 입력해주세요. (200자 이내)'
                         maxLength="200"
                         required
