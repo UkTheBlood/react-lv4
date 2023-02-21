@@ -7,17 +7,18 @@ function Home() {
             <div>
                 <StPTitle>무엇을 할까요?</StPTitle>
             </div>
-            <StDivContentsBox>
-                <Link to={"work/add"}>
+            <Link to={"work/add"}>
+                <StDivContentsBox>
                     <StPContensTitle>할 일 기록하기</StPContensTitle>
-                </Link>
-            </StDivContentsBox>
-            <StDivContentsBox>
-                <Link to={"/Works"}>
+
+                </StDivContentsBox>
+            </Link>
+            <Link to={"/Works"}>
+                <StDivContentsBox>
                     <StPContensTitle>TODO LIST</StPContensTitle>
-                </Link>
-            </StDivContentsBox>
-        </div>
+                </StDivContentsBox>
+            </Link>
+        </div >
     )
 }
 

@@ -1,10 +1,23 @@
-import { useQuery } from "react-query";
+import { QueryClient, useMutation, useQuery, useQueryClient } from "react-query";
 import styled from "styled-components";
 import { deleteTodo, getTodos } from "../api/todos";
 
 
 function Works() {
     const { isLoading, isError, data } = useQuery("todos", getTodos)
+
+    const queryClient = useQueryClient();
+
+    const mutation = useMutation(getTodos, {
+        onSuccess: () => {
+            queryClient.invalidateQueries("todos");
+        },
+    })
+
+    const deleteTodoList = (id) => {
+        deleteTodo(id)
+        mutation.mutate("todos")
+    }
 
     if (isLoading === true) {
         return <h1>로딩중입니다...</h1>
@@ -25,7 +38,7 @@ function Works() {
                             <StDivList key={todo.id}>
                                 <StPTitle>{todo.title}</StPTitle>
                                 <StPWritter>작성자 : {todo.writer}</StPWritter>
-                                <button onClick={() => deleteTodo(todo.id)}>삭제</button>
+                                <button onClick={() => deleteTodoList(todo.id)}>삭제</button>
                             </StDivList>
                         )
                     })
