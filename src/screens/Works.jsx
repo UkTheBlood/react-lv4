@@ -1,4 +1,5 @@
 import { QueryClient, useMutation, useQuery, useQueryClient } from "react-query";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { deleteTodo, getTodos } from "../api/todos";
 
@@ -35,11 +36,13 @@ function Works() {
                 {
                     data.map((todo) => {
                         return (
-                            <StDivList key={todo.id}>
-                                <StPTitle>{todo.title}</StPTitle>
-                                <StPWritter>작성자 : {todo.writer}</StPWritter>
-                                <button onClick={() => deleteTodoList(todo.id)}>삭제</button>
-                            </StDivList>
+                            <Link to={`works/${todo.id}`} key={todo.id} >
+                                <StDivList>
+                                    <StPTitle>{todo.title}</StPTitle>
+                                    <StPWritter>작성자 : {todo.writer}</StPWritter>
+                                    <button onClick={() => deleteTodoList(todo.id)}>삭제</button>
+                                </StDivList>
+                            </Link>
                         )
                     })
                 }
@@ -66,7 +69,9 @@ const StPTitle = styled.p`
     font-size: 22px;
     margin-bottom: 0px;
     font-weight: bold;
+    color: black;
 `
 const StPWritter = styled.p`
     font-size: 12px;
+    color: black;
 `

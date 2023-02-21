@@ -50,10 +50,7 @@ function Work() {
         } else {
             alert("input을 모두 입력해주세요")
         }
-
     }
-
-
 
     return (
         <>
