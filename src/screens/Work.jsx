@@ -29,23 +29,28 @@ function Work() {
 
     // 추가 버튼
     const addButton = () => {
-        const newTodo = {
-            writer,
-            title,
-            desc,
-            id: Math.random()
+        if (writer !== "" && title !== "" && desc !== "") {
+            const newTodo = {
+                writer,
+                title,
+                desc,
+                id: Math.random()
+            }
+            alert(`
+                추가되었습니다!
+                작성자 : ${writer}
+                제목 : ${title}
+            `)
+
+
+            setWriter("")
+            setTitle("")
+            setDesc("")
+            mutation.mutate(newTodo);
+        } else {
+            alert("input을 모두 입력해주세요")
         }
-        alert(`
-            추가되었습니다!
-            작성자 : ${writer}
-            제목 : ${title}
-        `)
 
-
-        setWriter("")
-        setTitle("")
-        setDesc("")
-        mutation.mutate(newTodo);
     }
 
 
