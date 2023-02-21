@@ -17,7 +17,8 @@ const deleteTodo = async (id) => {
 }
 
 // 수정
-const updateTodo = async(id, inputChange) => {
+const updateTodo = async({id, inputChange}) => {
+    console.log(inputChange)
     await axios.patch(`http://localhost:4002/todos/${id}`, {
         desc: inputChange
     })

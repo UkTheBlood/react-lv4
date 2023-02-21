@@ -7,17 +7,19 @@ import { getTodos, updateTodo } from '../api/todos';
 function Detail() {
 
   const param = useParams();
-  const [inputState, setInputState] = useState(false);
 
+  const [inputState, setInputState] = useState(false);
   const [inputChange, setInputChange] = useState();
 
   const { isLoading, isError, data } = useQuery("todos", getTodos);
 
-  const queryClient = useQueryClient();
+  console.log("data", data)
 
+  // React Query 부분
+  const queryClient = useQueryClient();
   const mutation = useMutation(updateTodo, {
     onSuccess: () => {
-      queryClient.invalidateQueries("")
+      queryClient.invalidateQueries("todos")
     },
   })
 
@@ -26,6 +28,7 @@ function Detail() {
     setInputChange(e.target.value)
   }
 
+  // input state 변경 함수
   const toggle = () => {
     setInputState(!inputState)
   }
@@ -38,10 +41,12 @@ function Detail() {
     return String(item.id) === param.id
   })
 
+  console.log("foundData",foundData)
+
+  // 저장 버튼 클릭시 일어나는 이벤트
   const onClickUpdateToggleHandler = (id, inputChange) => {
     setInputState(!inputState)
-    updateTodo(id, inputChange)
-    mutation.mutate("todos");
+    mutation.mutate({id, inputChange});   // mutate는 괄호
   }
 
   return (
