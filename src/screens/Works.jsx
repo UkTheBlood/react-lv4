@@ -36,13 +36,17 @@ function Works() {
                 {
                     data.map((todo) => {
                         return (
-                            <Link to={`/works/${todo.id}`} key={todo.id} >
-                                <StDivList>
-                                    <StPTitle>{todo.title}</StPTitle>
-                                    <StPWritter>작성자 : {todo.writer}</StPWritter>
-                                    <button onClick={() => deleteTodoList(todo.id)}>삭제</button>
-                                </StDivList>
-                            </Link>
+                            <StDivList key={todo.id} >
+                                <Link to={`/works/${todo.id}`} >
+
+                                    <div>
+                                        <StPTitle>{todo.title}</StPTitle>
+                                        <StPWritter>작성자 : {todo.writer}</StPWritter>
+
+                                    </div>
+                                </Link>
+                                <button onClick={() => deleteTodoList(todo.id)}>삭제</button>
+                            </StDivList>
                         )
                     })
                 }
