@@ -36,7 +36,7 @@ function Works() {
                 {
                     data.map((todo) => {
                         return (
-                            <Link to={`works/${todo.id}`} key={todo.id} >
+                            <Link to={`/works/${todo.id}`} key={todo.id} >
                                 <StDivList>
                                     <StPTitle>{todo.title}</StPTitle>
                                     <StPWritter>작성자 : {todo.writer}</StPWritter>

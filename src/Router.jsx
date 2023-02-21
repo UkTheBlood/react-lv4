@@ -11,9 +11,9 @@ function Router() {
             <Header />
             <Routes>
                 <Route path={"/"} element={<Home />} />
-                <Route path={"/work/add"} element={<Work />} />
-                <Route path={"/works"} element={<Works />} />
-                <Route path={"/works:id"} element={<Detail />} />
+                <Route path={"work/add"} element={<Work />} />
+                <Route path={"works"} element={<Works />} />
+                <Route path={"works/:id"} element={<Detail />} />
             </Routes>
         </BrowserRouter>
     )
